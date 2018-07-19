@@ -193,7 +193,7 @@ func (rs *ConfigStore) CheckPermission(inst *authorization.Instance, logger adap
 					}
 				}
 				if subject.GetGroup() != "" {
-					if subject.GetGroup() == "*" || subject.GetGroup() == groups {
+					if subject.GetGroup() == "*" || subject.GetGroup() == groups || (subject.GetGroup() != "" && strings.Contains(groups, subject.GetGroup())){
 						foundMatch = true
 					} else {
 						// Found a mismatch, try next subject.
